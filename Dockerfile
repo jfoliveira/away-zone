@@ -15,5 +15,15 @@ RUN go mod download
 COPY *.go ./
 RUN go build -o ${EXECUTABLE_NAME}
 
-# use a shell so env var is expanded
-CMD [ "sh", "-c", "./$BINARY_NAME" ]
+
+FROM scratch as health-checker
+WORKDIR /
+COPY --from=builder /app/health-checker /health-checker
+ENTRYPOINT ["/health-checker"]
+
+FROM scratch as web
+WORKDIR /
+COPY --from=builder /app/web-app /web
+EXPOSE 8000
+
+ENTRYPOINT ["/web"]
