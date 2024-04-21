@@ -10,6 +10,10 @@ list-containers: ## List running containers belonging to the docker compose proj
 	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) ps
 
+deploy-health-checker: # Build helm template and apply changes
+	@cd ./kubernetes/charts/away-zone-health-checker; \
+	helm template . -n away-zone --values ./values.yaml | kubectl apply -n away-zone -f -
+
 run-dev: build
 run-dev: ## Run in development mode. DO NOT use this in production environment!
 	$(info Starting development environment...)
