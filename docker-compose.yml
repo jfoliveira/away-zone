@@ -1,3 +1,7 @@
+networks:
+  away-zone:
+    name: away-zone
+
 services:
   web:
     image: away-zone-web:${DOCKERFILE_TARGET}
@@ -12,6 +16,8 @@ services:
       - "8000:8000"
     container_name: web
     restart: unless-stopped
+    networks:
+      - away-zone
 
   health-checker:
     image: away-zone-health-checker:${DOCKERFILE_TARGET}
@@ -20,7 +26,10 @@ services:
       context: src/health-checker
       dockerfile: ../../Dockerfile
       target: builder
+      # target: ${DOCKERFILE_TARGET}
       args:
         - EXECUTABLE_NAME=health-checker
     container_name: health-checker
     restart: unless-stopped
+    networks:
+      - away-zone
