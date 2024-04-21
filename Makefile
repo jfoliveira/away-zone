@@ -1,26 +1,26 @@
 DOCKER_BUILD_CONTEXT=.
-DOCKERFILE_NAME=Dockerfile
-DOCKERFILE_TARGET=dev
 DOCKER_COMPOSE_PROJECT_NAME=away-zone
+DOCKERFILE_NAME=Dockerfile
+IMAGE_TAG=dev
 
 build: ## TO DO: Build image for production release
 
 list-containers: ## List running containers belonging to the docker compose project
 	$(info Listing containers started by docker compose ...)
-	@export DOCKERFILE_TARGET=$(DOCKERFILE_TARGET) && \
+	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) ps
 
 run-dev: build
 run-dev: ## Run in development mode. DO NOT use this in production environment!
 	$(info Starting development environment...)
-	@export DOCKERFILE_TARGET=$(DOCKERFILE_TARGET) && \
+	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) up -d
 
 stop-dev: ## Stop running dev containers. Set `DELETE_IMAGES` to any value, e.g. DELETE_IMAGES=y, will delete image for current target
 	$(info Stopping runnning containers in development environment...)
-	@export DOCKERFILE_TARGET=$(DOCKERFILE_TARGET) && \
+	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) down
-	$(if $(DELETE_IMAGES), docker rmi `docker images -q "$(DOCKER_COMPOSE_PROJECT_NAME)*:$(DOCKERFILE_TARGET)" | uniq`)
+	$(if $(DELETE_IMAGES), docker rmi `docker images -q "$(DOCKER_COMPOSE_PROJECT_NAME)*:$(IMAGE_TAG)" | uniq`)
 
 help: ## Show this help.
 # `help' function obtained from GitHub gist: https://gist.github.com/prwhite/8168133?permalink_comment_id=4160123#gistcomment-4160123

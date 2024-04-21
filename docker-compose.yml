@@ -4,12 +4,12 @@ networks:
 
 services:
   web:
-    image: away-zone-web:${DOCKERFILE_TARGET}
+    image: away-zone-web:${TAG:-latest}
     pull_policy: build
     build:
       context: ./src/web
       dockerfile: ../../Dockerfile
-      target: builder
+      target: web
       args:
         - EXECUTABLE_NAME=web-app
     ports:
@@ -20,13 +20,12 @@ services:
       - away-zone
 
   health-checker:
-    image: away-zone-health-checker:${DOCKERFILE_TARGET}
+    image: away-zone-health-checker:${TAG:-latest}
     pull_policy: build
     build:
       context: src/health-checker
       dockerfile: ../../Dockerfile
-      target: builder
-      # target: ${DOCKERFILE_TARGET}
+      target: health-checker
       args:
         - EXECUTABLE_NAME=health-checker
     container_name: health-checker
