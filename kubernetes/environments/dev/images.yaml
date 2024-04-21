@@ -1,0 +1,5 @@
+away-zone-health-checker:
+  image:
+    repository: away-zone-health-checker
+    pullPolicy: Always
+    tag: "dev"

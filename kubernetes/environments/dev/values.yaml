@@ -1,0 +1,13 @@
+# If there is a huge need to specify CSP or cluster specific vlaues, make a copy of this file
+# and add a suffix to identity CSP or cluster:
+# Examples:
+# - Values per CSP:
+#   - `values-aws.yaml`
+#   - `values-azure.yaml`
+#   - `values-gcp.yaml`
+# - Values per cluster:
+#   - `values-aws_<region>_<cluster_name>.yaml`
+#   - `values-azure_<region>_<cluster_name>.yaml`
+#   - `values-gke_<project_name>_<region>_<cluster_name>.yaml`
+#
+# TO DO: set `dev` environment variables or .env

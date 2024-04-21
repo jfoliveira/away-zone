@@ -5,23 +5,27 @@ IMAGE_TAG=dev
 
 build: ## TO DO: Build image for production release
 
+deploy-health-checker: ## Build helm template and apply changes to selected env. e.g. `make deploy-health-checker ENVIRONMENT=dev`
+	$(info Deploying helath-checker ...)
+	@cd ./kubernetes/; \
+	helm template ./charts/away-zone-health-checker \
+	-n away-zone \
+	--values ./environments/$(ENVIRONMENT)/values.yaml \
+	| kubectl apply -n away-zone -f -
+
 list-containers: ## List running containers belonging to the docker compose project
 	$(info Listing containers started by docker compose ...)
 	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) ps
 
-deploy-health-checker: # Build helm template and apply changes
-	@cd ./kubernetes/charts/away-zone-health-checker; \
-	helm template . -n away-zone --values ./values.yaml | kubectl apply -n away-zone -f -
-
 run-dev: build
 run-dev: ## Run in development mode. DO NOT use this in production environment!
-	$(info Starting development environment...)
+	$(info Starting development environment ...)
 	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) up -d
 
 stop-dev: ## Stop running dev containers. Set `DELETE_IMAGES` to any value, e.g. DELETE_IMAGES=y, will delete image for current target
-	$(info Stopping runnning containers in development environment...)
+	$(info Stopping runnning containers in development environment ...)
 	@export IMAGE_TAG=$(IMAGE_TAG) && \
 	docker compose -p $(DOCKER_COMPOSE_PROJECT_NAME) down
 	$(if $(DELETE_IMAGES), docker rmi `docker images -q "$(DOCKER_COMPOSE_PROJECT_NAME)*:$(IMAGE_TAG)" | uniq`)
