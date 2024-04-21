@@ -19,8 +19,8 @@ func main() {
 	// TO DO: port should not be hardcoded
 	listeningPort := 8000
 
-	logger := log.New(os.Stdout, "", log.LstdFlags)
-	logger.Printf("Starting HTTP server ... Listening on port %d", listeningPort)
+	logger := log.New(os.Stdout, "- WEB - ", log.LstdFlags)
+	logger.Printf("INFO: Starting HTTP server ... Listening on port %d", listeningPort)
 
 	c := new(controller)
 	router := http.NewServeMux()
@@ -38,7 +38,7 @@ func main() {
 	}
 
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		logger.Fatalf("Could not listen on port %d: %v\n", listeningPort, err)
+		logger.Fatalf("ERROR: Could not listen on port %d: %v\n", listeningPort, err)
 	}
 }
 
