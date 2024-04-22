@@ -1,0 +1,10 @@
+apiVersion: v2
+name: away-zone-health-checker
+version: 0.1.0
+# Ideally we should have each environment defining which version of the application chart to be used
+# and load it from a private helm repository
+# Example:
+# dependencies:
+#   - name: health-checker
+#     version: 1.0.1
+#     repository: oci://us-docker.pkg.dev/<gcp-project-name>/helm-charts

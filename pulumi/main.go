@@ -19,6 +19,15 @@ func main() {
 		fmt.Println(dir)
 		release, err := helm.NewRelease(ctx, "health-checker", &helm.ReleaseArgs{
 			Chart: pulumi.String("../kubernetes/charts/away-zone-health-checker"),
+			// TO DO: to be production ready we should deploy all away-zone charts to a remote helm repository
+			// and get environment specific charts specifiying the chart version used in that environment.
+			// Chart could be loaded either from repository files
+			// Chart:     pulumi.String("../kubernetes/environments/dev/Chart.yaml"),
+			//... or from remote repo:
+			// Version: pulumi.String("0.2.0"),
+			// RepositoryOpts: &helm.RepositoryOptsArgs{
+			// 	Repo: pulumi.String("https://charts.helm.sh/stable"),
+			// },
 
 			Namespace: pulumi.String("away-zone"),
 			Timeout:   pulumi.Int(10),
