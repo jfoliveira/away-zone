@@ -1,0 +1,3 @@
+name: away-zone
+runtime: go
+description: A Pulumi program to manage AwayZone's dynamic infrastructure and deploy helm charts to kubernetes
