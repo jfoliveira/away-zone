@@ -6,12 +6,13 @@ IMAGE_TAG=dev
 build: ## TO DO: Build image for production release
 
 deploy-health-checker: ## Build helm template and apply changes to selected env. e.g. `make deploy-health-checker ENVIRONMENT=dev`
-	$(info Deploying helath-checker ...)
-	@cd ./kubernetes/; \
-	helm template ./charts/away-zone-health-checker \
+	$(info Deploying health-checker ...)
+	cd ./kubernetes/; \
+	helm upgrade --install --timeout 10s \
 	-n away-zone \
-	--values ./environments/$(ENVIRONMENT)/values.yaml \
-	| kubectl apply -n away-zone -f -
+	health-checker ./charts/away-zone-health-checker \
+	--values ./environments/$(ENVIRONMENT)/image.yaml \
+	--values ./environments/$(ENVIRONMENT)/values.yaml
 
 list-containers: ## List running containers belonging to the docker compose project
 	$(info Listing containers started by docker compose ...)

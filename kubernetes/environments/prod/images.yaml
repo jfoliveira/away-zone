@@ -1,7 +1,4 @@
-away-zone-health-checker:
-  image:
-    repository: away-zone-health-checker
-    # TO DO: adopted versioned tags and only pull image if not present
-    # pullPolicy: IfNotPresent
-    pullPolicy: Always
-    tag: "prod"
+image:
+  repository: away-zone-health-checker
+  pullPolicy: IfNotPresent
+  tag: "prod"

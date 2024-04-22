@@ -1,5 +1,4 @@
-away-zone-health-checker:
-  image:
-    repository: away-zone-health-checker
-    pullPolicy: Always
-    tag: "dev"
+image:
+  repository: away-zone-health-checker
+  pullPolicy: IfNotPresent
+  tag: "dev"
