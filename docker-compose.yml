@@ -7,7 +7,7 @@ services:
     image: away-zone-web:${IMAGE_TAG:-latest}
     pull_policy: build
     build:
-      context: ./src/web
+      context: apps/web
       dockerfile: ../../Dockerfile
       target: web
       args:
@@ -23,7 +23,7 @@ services:
     image: away-zone-health-checker:${IMAGE_TAG:-latest}
     pull_policy: build
     build:
-      context: src/health-checker
+      context: apps/health-checker
       dockerfile: ../../Dockerfile
       target: health-checker
       args:

@@ -14,7 +14,7 @@ A very reliable application - that's `Always On` (pun intended) - relying on an 
 
 ## Usage
 
-### Build and init web application and health-checker
+### Build and init web and health-checker applications
 
 ```shell
 make run-dev
@@ -24,6 +24,12 @@ make run-dev
 
 ```shell
 make stop-dev
+```
+
+### Just build images
+
+```shell
+make build
 ```
 
 ### Miscellaneous

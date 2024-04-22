@@ -3,7 +3,8 @@ DOCKER_COMPOSE_PROJECT_NAME=away-zone
 DOCKERFILE_NAME=Dockerfile
 IMAGE_TAG=dev
 
-build: ## TO DO: Build image for production release
+build: ## Build images
+	@docker compose build web health-checker
 
 deploy-health-checker: ## Build helm template and apply changes to selected env. e.g. `make deploy-health-checker ENVIRONMENT=dev`
 	$(info Deploying health-checker ...)
