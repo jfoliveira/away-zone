@@ -80,7 +80,7 @@ make
 
 - [x] Terraform - Create `azure-aks-cluster` module
 - [x] Terraform - Create project/root module to provision a CSP environment per region
-- [ ] Provision managed Kubernetes cluster, using terraform
+- [x] Provision managed Kubernetes cluster, using terraform
 
 ### Documentation
 

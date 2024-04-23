@@ -22,4 +22,4 @@ For each new cloud provider region to be supported a folder must be created, kee
 
 ### Terraform
 
-It's recommended to use [tfswitch](https://tfswitch.warrensbox.com/Install/) to manage your `terraform` versions, as multiple modules in this repo uses different versions of `terraform`
+It's recommended to use [tfswitch](https://tfswitch.warrensbox.com/Install/) to manage your `terraform` versions, as modules in this repo have different `terraform` version requirements.

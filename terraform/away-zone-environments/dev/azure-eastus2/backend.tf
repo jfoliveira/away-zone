@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    region = "us-east-1"
+    region = "ap-northeast-1"
     bucket = "away-zone-terraform-config"
     key    = "away-zone-environments/dev/azure-eastus2.tfstate"
     # TO DO: run terraform plan/apply in AwayZone CI/CD, reading AWS provider
