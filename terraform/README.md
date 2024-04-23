@@ -1,10 +1,22 @@
-# TO DO:
+# AwayZone infrastructure environments
 
-- [ ] provision AwayZone kubernetes cluster in a cloud management kubernetes environment
+Terraform project to provision all the infra needed in each `AwayZone` region.
 
-# AwayZone infrastructure
+## Directory layout
 
-This repo will contain terraform modules and scripts to provision AwayZone's foundational infrastructure, such as Kubernetes clusters.
+For each new cloud provider region to be supported a folder must be created, keeping the following directoy layout:
+
+```md
+- away-zone-environments
+  - <environment>
+    - <csp-region>
+      backend.tf
+      providers.tf
+      terraform.tfvars
+      .
+      ,
+      ... other terraform files
+```
 
 ## Dependencies
 
