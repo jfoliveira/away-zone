@@ -1,0 +1,3 @@
+# TODO: build CI/CD automation to publish version terraform modules to a remote source
+name: "azure-aks-cluster"
+version: 0.1.0

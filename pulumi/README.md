@@ -7,18 +7,12 @@ A simple Pulumi program to deploy `away-zone-health-checker` helm chart to a Kub
 - [Go](https://go.dev/doc/install)
 - [pulumi](https://www.pulumi.com/docs/install/)
 
-## Prepare local environment
-
-Before running pulumi to deploy new changes, make sure the program dependencies are installed locally:
-
-```shell
-go mod tidy
-```
-
 ## Usage
 
 This `Go` program is automatically compiled and initialized by Pulumi.
-Just run:
+
+> Note: The program dependencies are downloaded and installed when pulumi is invoked.
+> Just run:
 
 ```shell
 pulumi up
