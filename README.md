@@ -1,6 +1,8 @@
 # AwayZone
 
-A very reliable application - that's `Always On` (pun intended) - relying on an automated health check system to notify the team when something is not right.
+<img width="535" alt="image" src="https://github.com/jfoliveira/away-zone/assets/1943318/5bd99bc7-bc09-48e5-937d-f663cacbe990">
+
+A highly available web application - that's `Always On` (pun intended :D) - relying on an automated health check system to notify the team when something is not working as expected.
 
 ## Dependencies
 
@@ -76,6 +78,8 @@ make
 
 ### Provision infrastructure for application
 
+- [x] Terraform - Create `azure-aks-cluster` module
+- [x] Terraform - Create project/root module to provision a CSP environment per region
 - [ ] Provision managed Kubernetes cluster, using terraform
 
 ### Documentation

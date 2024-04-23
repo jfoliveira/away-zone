@@ -4,7 +4,7 @@ Terraform module to provision a cluster and related reosources on Azure Kubernet
 
 ## Example usage
 
-```go
+```hcl
 module "kubernetes_cluster" {
   # TO DO: consume versioned module from modules "repository"
   # source = "s3::https://s3.amazonaws.com/away-zone-tf-modules/azure-aks-cluster-0.1.0.zip"
